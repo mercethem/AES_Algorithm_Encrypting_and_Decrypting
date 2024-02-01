@@ -91,11 +91,12 @@ Node* control_text(Node* root, unsigned char directory[])
 }
 
 
-void crypting(Node* root, unsigned char key_buffer[])
+void encrypting(Node* root, unsigned char key_buffer[])
 {
     unsigned char cipher_buffer[16];
     while (root->next != NULL)
     {
+
         aes_encrypt(root->data, cipher_buffer, key_buffer, SIZE);
         strncpy(root->data, cipher_buffer, 16);
         root = root->next;
@@ -113,11 +114,11 @@ void decrypting(Node* root, unsigned char key_buffer[])
     }
 }
 
-void crypting_text(Node* root, unsigned char key_buffer[])
+void encrypting_text(Node* root, unsigned char key_buffer[])
 {
     unsigned char cipher_buffer[FILENAME_MAX];
     FILE* cipher_text_path = fopen("E:\\C_Projects\\MyProject\\AES\\cipher.txt", "w+");
-    crypting(root, key_buffer);
+    encrypting(root, key_buffer);
 
     while (root->next != NULL)
     {
@@ -132,9 +133,8 @@ void decrypting_text(Node* root, unsigned char key_buffer[])
 {
     unsigned char decrypted_buffer[FILENAME_MAX];
     FILE* decrypted_text_path = fopen("E:\\C_Projects\\MyProject\\AES\\decrypted.txt", "w+");
-//    root = control_text(root, decrypted_text_path);
-
     decrypting(root, key_buffer);
+
     while (root->next != NULL)
     {
         fprintf(decrypted_text_path, "%s", root->data);
@@ -144,22 +144,8 @@ void decrypting_text(Node* root, unsigned char key_buffer[])
 }
 
 
-void expanded_key_creating(Node* root, unsigned char key_buffer[])
-{
-    unsigned char expanded_key_buffer[EXPANDEDKEYSIZE];
-    expandKey(expanded_key_buffer, key_buffer, SIZE_16, EXPANDEDKEYSIZE);
-    strncpy(root->data, expanded_key_buffer, EXPANDEDKEYSIZE);
-}
 
 
-void print_text(Node* root)
-{
-    while (root->next != NULL)
-    {
-        printf("%s", root->data);
-        root = root->next;
-    }
-}
 
 
 
