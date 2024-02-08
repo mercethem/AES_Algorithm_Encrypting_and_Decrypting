@@ -1,11 +1,11 @@
-//
+//PROJECT_UTILITY_H
 #ifndef PROJECT_UTILITY_H
 #define PROJECT_UTILITY_H
 
 
 #include <stdio.h>
 
-#define MAXLIMIT 1000
+#define MAXLIMIT 10000
 
 
 struct Node
@@ -22,7 +22,6 @@ void encrypting(Node* root, unsigned char key_buffer[]);
 void decrypting(Node* root, unsigned char key_buffer[]);
 void encrypting_text(Node* root, unsigned char key_buffer[]);
 void decrypting_text(Node* root, unsigned char key_buffer[]);
-
 
 Node* insert_contiguous(Node* root, unsigned char sval[]);
 void deleteAll(Node** root);
