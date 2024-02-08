@@ -1,5 +1,5 @@
 //
-// Created by User on 30.12.2023.
+//   Taken from (https://github.com/m3y54m/aes-in-c)
 //
 
 #ifndef AES_IN_C_MAIN_AES_H
