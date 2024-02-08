@@ -3,21 +3,24 @@
 #include <dirent.h>
 #include "aes.h"
 
+#define DECRYPTED_TEXT "E:\\C_Projects\\MyProject\\AES\\decrypted.txt"
+#define CIPHER_TEXT "E:\\C_Projects\\MyProject\\AES\\cipher.txt"
+
+
+//Print to list with linked list
 void print_list(Node* root)
 {
     printf("\nYour Linked List :\n\n");
 
     while (root)
     {
-//        printf("%02x ", root->data);
-//        printf("%2.2x%c", root->data, ((i + 1) % 16) ? ' ');
         printf("%s", root->data);
         root = root->next;
     }
     printf("\n");
 }
 
-
+//Free to list
 void deleteAll(struct Node** root)
 {
     struct Node* iter = *root;
@@ -32,7 +35,7 @@ void deleteAll(struct Node** root)
     *root = NULL;
 }
 
-
+//Insert contiguous to list
 Node* insert_contiguous(Node* root, unsigned char sval[])
 {
     if (root == NULL)
@@ -57,6 +60,7 @@ Node* insert_contiguous(Node* root, unsigned char sval[])
     return root;
 }
 
+//Control the linked list and insert contiguous
 Node* control_text(Node* root, unsigned char directory[])
 {
     unsigned char ornek_buffer[MAXLIMIT];
@@ -81,16 +85,14 @@ Node* control_text(Node* root, unsigned char directory[])
     {
         unsigned char tempstr[17] = "";
         strncpy(tempstr, ornek_buffer + count, 16);
-
         count += 16;
-
         root = insert_contiguous(root, tempstr);
     }
 
     return root;
 }
 
-
+//Encrypting function with linked list
 void encrypting(Node* root, unsigned char key_buffer[])
 {
     unsigned char cipher_buffer[16];
@@ -103,6 +105,7 @@ void encrypting(Node* root, unsigned char key_buffer[])
     }
 }
 
+//Decrypting function with linked list
 void decrypting(Node* root, unsigned char key_buffer[])
 {
     unsigned char decryption_buffer[16];
@@ -114,10 +117,11 @@ void decrypting(Node* root, unsigned char key_buffer[])
     }
 }
 
+//Print Encrypted text //ATTENTION : Control the path
 void encrypting_text(Node* root, unsigned char key_buffer[])
 {
     unsigned char cipher_buffer[FILENAME_MAX];
-    FILE* cipher_text_path = fopen("E:\\C_Projects\\MyProject\\AES\\cipher.txt", "w+");
+    FILE* cipher_text_path = fopen(CIPHER_TEXT, "w+");
     encrypting(root, key_buffer);
 
     while (root->next != NULL)
@@ -129,10 +133,11 @@ void encrypting_text(Node* root, unsigned char key_buffer[])
     fclose(cipher_text_path);
 }
 
+//Print Decrypted text //ATTENTION : Control the path
 void decrypting_text(Node* root, unsigned char key_buffer[])
 {
     unsigned char decrypted_buffer[FILENAME_MAX];
-    FILE* decrypted_text_path = fopen("E:\\C_Projects\\MyProject\\AES\\decrypted.txt", "w+");
+    FILE* decrypted_text_path = fopen(DECRYPTED_TEXT, "w+");
     decrypting(root, key_buffer);
 
     while (root->next != NULL)
