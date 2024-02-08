@@ -26,7 +26,7 @@ That plain.txt has got main encrytion message and if you wantto lunch decryption
 ogram. First think is click 1 and use to url and restart program again now click 2 and use to url again and sho
 
 
-
+# A simple screen instance gif is below:
 ![ Alt text](screen.gif)  [](screen.gif)
 <br />
 </a>
