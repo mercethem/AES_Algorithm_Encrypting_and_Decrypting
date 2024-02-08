@@ -1,4 +1,4 @@
-# AES Encrypting and decrypting algorithm
+# AES (The Advanced Encryption Standard)
 AES library [aes.c/.h] taken from (https://github.com/m3y54m/aes-in-c)
 
 This project is extremely amateur.
