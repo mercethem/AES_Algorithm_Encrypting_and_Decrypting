@@ -1,9 +1,8 @@
 //
-// Created by User on 30.12.2023.
+//  Taken from (https://github.com/m3y54m/aes-in-c)
 //
 
 #include "aes.h"
-
 
 
 unsigned char getSBoxValue(unsigned char num)
@@ -21,7 +20,7 @@ unsigned char getSBoxInvert(unsigned char num)
  *
  * rotate(1d2c3a4f) = 2c3a4f1d
  *
- * word is an char array of size 4 (32 bit)
+ * word is a char array of size 4 (32 bit)
  */
 void rotate(unsigned char *word)
 {
@@ -59,7 +58,7 @@ void core(unsigned char *word, int iteration)
 /* Rijndael's key expansion
  * expands an 128,192,256 key into an 176,208,240 bytes key
  *
- * expandedKey is a pointer to an char array of large enough size
+ * expandedKey is a pointer to a char array of large enough size
  * key is a pointer to a non-expanded key
  */
 
@@ -88,7 +87,7 @@ void expandKey(unsigned char *expandedKey,
         }
 
         /* every 16,24,32 bytes we apply the core schedule to t
-         * and increment rconIteration afterwards
+         * and increment rconIteration after wards
          */
         if (currentSize % size == 0)
         {
