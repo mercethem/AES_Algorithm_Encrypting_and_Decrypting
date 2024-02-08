@@ -3,9 +3,6 @@
 #include <dirent.h>
 #include "aes.h"
 
-#define DECRYPTED_TEXT "E:\\C_Projects\\MyProject\\AES\\decrypted.txt"
-#define CIPHER_TEXT "E:\\C_Projects\\MyProject\\AES\\cipher.txt"
-
 
 //Print to list with linked list
 void print_list(Node* root)
