@@ -5,7 +5,7 @@
 
 
 //Print to list with linked list
-void print_list(Node* root)
+void print_list(const Node* root)
 {
     printf("\nYour Linked List :\n\n");
 
