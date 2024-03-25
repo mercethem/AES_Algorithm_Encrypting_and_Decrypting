@@ -27,7 +27,7 @@ void decrypting_text(Node* root, unsigned char key_buffer[]);
 
 Node* insert_contiguous(Node* root, unsigned char sval[]);
 void deleteAll(Node** root);
-void print_list(Node* root);
+void print_list(const Node* root);
 
 
 
